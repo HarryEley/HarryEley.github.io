@@ -76,20 +76,54 @@
 									-->
 								<p>
 									This game was made within a team of 12 throughout our second year of University, and won game of the year for both people's choice and staff's choice. The team consisted of 3 designers, 4 artists, 4 programmers, and a writer. 
-									Everyone worked within these specialisms, allowing for the game to take shape and be produced to the best quality it could. For this game I prototyped and 
-									developed numerous systems for the game. For example, an easily adaptable resource system, an AI pathing tool, glider abilities, and other miscellaneus scripts.
+									Everyone worked within these specialisms, allowing for the game to take shape and be produced to the best quality it could. For this game, I prototyped and 
+									developed numerous systems. For example, an easily adaptable resource system, an AI pathing tool, glider abilities, and other miscellaneus scripts.
 								</p>
 								<section>
 									<header>
 										<h3>Example Systems + Scripts</h3>
 									</header>
-									<p>
-										Adaptable Resource System:
-										<br />
-										<br />
-										The adaptable resource system was a series of scripts that made use of scriptable objects, enabling designers to easily add new resource types to the game.
-										These new resources would be automatically added to an in-game UI once created and added to the resource list.
-									</p>
+
+									<button type="button" class="collapsible">Example:</button>
+									<div class="content">
+										<p>
+											content
+										</p>
+									</div>
+
+									<br />
+									<br />
+
+									<button type="button" class="collapsible">Adaptable Resource System:</button>
+									<div class="content">
+										<p>
+											The adaptable resource system was a series of scripts that made use of scriptable objects, enabling designers to easily add new resource types to the game.
+											These new resources would be automatically added to an in-game UI once added to the resource list, and were easy to set up as a collectable object within the levels.
+										</p>
+
+										<p>
+											Below is the setup for ResourceManager.cs, the main script of the resource system:
+										</p>
+										<p>
+											The awake method is used to set up the system, getting the list of resources from the resources folder and using it to create the game UI that displays
+											the player's resource counts.
+										</p>
+										<img src="images/FreeflightScripts/ResourceSystem/ResourceManagerSetup.PNG" alt="" />
+
+										<p>
+											Meanwhile, throughout the script are other methods that enable us to edit and obtain these different resource values. For example, to remove and add to
+											the count of how many times a specific resource the player owns, a method to obtain the amount of a resource owned, and a method to update the player's
+											UI to reflect these changes.
+										</p>
+										<img src="images/FreeflightScripts/ResourceSystem/ResourceManagerMethods.PNG" alt="" />
+										<p>
+											The main premise of this system was to enable the designers to easily add or remove resource types in the game, enabling them to spend more time on level
+											design and fine tuning the other mechanics in the game.
+										</p>
+									</div>
+									<br />
+									<br />
+
 									<p>
 										AI Pathing:
 										<br />
