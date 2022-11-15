@@ -58,7 +58,7 @@
 
 						<!-- Content -->
 							<article class="box post">
-								<a href="https://glideaway-games.itch.io/freeflight/" target="_blank" class="image featured"><img src="images/freeflight.jpg" alt="" /></a>
+								<a target="_blank" href="https://glideaway-games.itch.io/freeflight/" target="_blank" class="image featured"><img src="images/freeflight.jpg" alt="" /></a>
 								<header>
 									<h2>Overview</h2>
 								</header>
@@ -84,13 +84,6 @@
 									<header>
 										<h3>Example Systems + Scripts</h3>
 									</header>
-
-									<button type="button" class="collapsible">Example:</button>
-									<div class="content">
-										<p>
-											content
-										</p>
-									</div>
 
 									<br />
 									<br />
@@ -125,25 +118,48 @@
 									<br />
 									<br />
 
-									<button type="button" class="collapsible">Glider abilities:</button>
+									<button type="button" class="collapsible">Shockwave</button>
 									<div class="content">
 										<p>
 
+											A script used to destroy nearby objects to get through a secret passageway or to collect resources stuck inside an object.
+											<br />
+											<br />
 
+											The script functioned through gathering all nearby objects and checking their tags, creating the relevant reaction depending on which tag the object has,
+											for example, if the object was tagged with "Pushable", the object would be pushed in the direction away from the glider, or if it was a "Destructable" object,
+											the gameObject would be simply destroyed.
 
+											<br />
+
+											<img src="images/FreeflightScripts/ShockwaveCalculateMethod.PNG" alt="" />
+
+											<br />
+											One improvement I would make to this script if I was making it now would be to use a LayerMask, since this would remove having to sort through all object
+											that have nothing to do with the shockwave ability. Another improvement being having the case subjects be variables in case the tags need to be changed
+											by the designers.
+
+											<br />
+											The other functions of this script included a simple coroutine for handling a delay between uses, and a function to play an animation when used.
+
+											<br />
+											<br />
 										</p>
 									</div>
 									<br />
 									<br />
 
-									<p>
-										AI Pathing:
-										<br />
-										<br />
+									<button type="button" class="collapsible">Pathing Tool</button>
+									<div class="content">
+										<p>
+											This was a tool which allowed the user to use bezier curves to create a custom path for an AI agent to follow. 
+											Although most of this tool was made using a tutorial (which can be found <a target="_blank" href=https://www.youtube.com/watch?v=RF04Fi9OCPc&list=PLFt_AvWsXl0d8aDaovNztYf6iTChHzrHP> here </a>), 
+											I adapted it into a 3D space and implemented my own system so an agent could follow the created path.
+										</p>
+									</div>
 
-									</p>
 									<p>
-										Other:
+										write quick desc that there were other scripts/systems
 										<br />
 										<br />
 
