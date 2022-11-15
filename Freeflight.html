@@ -152,14 +152,34 @@
 									<button type="button" class="collapsible">Pathing Tool</button>
 									<div class="content">
 										<p>
-											This was a tool which allowed the user to use bezier curves to create a custom path for an AI agent to follow. 
-											Although most of this tool was made using a tutorial (which can be found <a target="_blank" href=https://www.youtube.com/watch?v=RF04Fi9OCPc&list=PLFt_AvWsXl0d8aDaovNztYf6iTChHzrHP> here </a>), 
+											This was a tool which allowed the user to use bezier curves to create a custom path for an AI agent to follow. It functioned through having a list of points, and using
+											these points to draw a bezier curve. having two points be the points in which the curve go through, and another two being the weight points that help the user to change
+											the curve.
+											<br />
+											Although most of this tool was made using a tutorial (which can be found <a target="_blank" href=https://www.youtube.com/watch?v=RF04Fi9OCPc&list=PLFt_AvWsXl0d8aDaovNztYf6iTChHzrHP> here </a>),
 											I adapted it into a 3D space and implemented my own system so an agent could follow the created path.
 										</p>
-									</div>
+										<p>
+											Below is the base script for this system. It controls adding, removing and editing of the different segments of the created curve.
+											<br />
+											<br />
+											Whenever anything was changed to do with a segment, a number of different points needed to be created, removed, or changed so that the editor could function as
+											intended.
 
+										</p>
+										<img src="images/FreeflightScripts/PathingToolSegmentControls.PNG" alt="" />
+										<p>
+											This script also had a function for moving the different points so that the resultant bezier curve could then be updated.
+											<br />
+											<br />
+											This function would take a given point and change it's stored position value to be the new value given from the editor script.
+										</p>
+										<img src="images/FreeflightScripts/PathingToolMovePoint.PNG" alt="" />
+									</div>
+									<br />
+									<br />
 									<p>
-										write quick desc that there were other scripts/systems
+										Throughout development I prototyped, developed and maintained many different scripts and systems, for example other glider abilities, AI behaviours, and more.
 										<br />
 										<br />
 
