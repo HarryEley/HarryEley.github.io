@@ -71,7 +71,7 @@
 							<p>
 								This game was made within a team of 6 throughout our first year of University. This was our first major game project. This team consisted of 2 programmers, 2 designers,
 								and 2 artists. I took the role of lead programmer throughout development, helping to design, develop and maintain all scripts and systems made for the project. Some of the
-								main systems I had most impact on was the main physics-based movement, enemy AI behaviours, and other miscellaneus scripts
+								main systems I had most impact on was the main physics-based movement, enemy AI behaviours, and other miscellaneous scripts
 
 								Talk about team composition and what my main aspect of development were
 							</p>
@@ -86,33 +86,85 @@
 								<button type="button" class="collapsible">Main Movement Script</button>
 								<div class="content">
 									<p>
-										When designing the main movement script, we wanted it to be physics based so we could achieve a more realistic feel for the player. This controller allowed the 
+										When designing the main movement script, we wanted it to be physics based so we could achieve a more realistic feel for the player. This controller allowed the
 										user to walk around, run, crouch and slide. All features we would want to make use of within a stealth game.
 									</p>
 									<p>
 										Below is the first part of the movement script, where I took the user's inputs and applied the appropriate reaction, getting these inputs from Unity's input system.
 									</p>
 									<img src="images/ProjectStealthScripts/MovementMyInput.PNG" alt="" />
+									<br />
+									<br />
+									<p>
+										Below is the main movement function. This controls and applies all movement to the player. Fristly, it find the player's velocity relative to the direction the player
+										is looking, then applies the relevant CounterMovemnt, passing these velocity values. We then check whether the player is wanting to jump, and apply the jump if needed,
+										if I was writing this script again I would separate this into it's own method to be called directly from the button press. We then check whether the player is crouched,
+										ensuring to add a sliding force so they can slide down ramps and steep declines. The method then checks whether we have reached the max speed, ensuring more force
+										is not added to the player if the maximum speed has already been reached. Finally, in this method, a directional force is applied to the player in the input direction.
+									</p>
+									<img src="images/ProjectStealthScripts/MovementMainMove.PNG" alt="" />
+
+									<br />
+									<br>
+									<p>
+										This method applies an apposing force to the player, simulating friction. Firstly, it returns out of the function is not grounded since this is to simulate the floor
+										friction. Additional counter movement is then applied if sliding. After this, the main counter movement is applied to the player in the opposite direction of movement. 
+										I then wrote a small if statement to limit diagonal running speeds, setting the player's velocity directly if travelling too quickly
+									</p>
+									<img src="images/ProjectStealthScripts/MovementCounterMove.PNG" alt="" />
+
+									<p>
+										There are many different things I would change throughout this script to improve it, such as adding the hardcoded values as variables, separating large methods into
+										smaller ones to keep the code cleaner and more organised, and other general improvements.
+									</p>
 								</div>
 
 
-
-								<button type="button" class="collapsible">Main Movement Script</button>
+								<br />
+								<br />
+								<button type="button" class="collapsible">Drone AI Behaviour</button>
 								<div class="content">
 									<p>
-
+										The drones roaming around the levels in the game were to be a big obstacle to the player, having them patrol given areas, go towards the player if they were seen for
+										a short amount of time, and getting effected by the hack feature available to the player. This drone made use of Unity's NAvMesh and NavMeshAgents.
+									</p>
+									<p>
+										Below are some of the main methods within the AI script, controlling which patrol point the drone is to move to and changing the drone's active behaviour state. The
+										MoveBetweenPoints method controls which point the AI is actively moving towards, changing to the next point whenever it reaches this point and circling back to the 
+										initial point when the final destination is reached. 
+										<br />
+										The Investigate method changes the dronestate to investigating and makes the drone search the last known location of the player. 
+										<br />
+										The HackDrone method handles the drone getting hacked, changing it's behaviour depending on whether it is controllable on not.
+									</p>
+									<img src="images/ProjectStealthScripts/DroneAIGeneral.PNG" alt="" />
+									<p>
+										This switch statement is found within the update method, controlling what the drone is doing depending on it's behaviour state. 
+										<br />
+										If the dronestate is patrolling, it calls the MoveBetweenPoints function so it can continue patrolling its designated area.
+										<br />
+										If the dronestate is investigating, it checks whether it has reached the player's last known position, in which when it does it will continue patrolling if the player
+										isn't seen again.
+										<br />
+										If the dronestate is hacked, the drone is swtiched into it's hacked state, allowing the player to control it if applicable, and keeping the drone hacked for an amount
+										of time.
+									</p>
+									<img src="images/ProjectStealthScripts/DroneAIStateController.PNG" alt="" />
+								</div>
+								<!--
+			
+								<br />
+								<br />
+								<button type="button" class="collapsible">Miscellaneous</button>
+								<div class="content">
+									<h5>a</h5>
+									<p>
+										
 									</p>
 									<img src="images/ProjectStealthScripts/MovementMyInput.PNG" alt="" />
 								</div>
 
-								<button type="button" class="collapsible">Main Movement Script</button>
-								<div class="content">
-									<p>
-
-									</p>
-									<img src="images/ProjectStealthScripts/MovementMyInput.PNG" alt="" />
-								</div>
-
+								-->
 							</section>
 							<section>
 								<header>
