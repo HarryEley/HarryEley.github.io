@@ -80,6 +80,9 @@
 									Everyone worked within these specialisms, allowing for the game to take shape and be produced to the best quality it could. For this game, I prototyped and 
 									developed numerous systems. For example, an easily adaptable resource system, an AI pathing tool, glider abilities, and other miscellaneus scripts.
 								</p>
+								<p>
+									<a target="_blank" href=https://glideaway-games.itch.io/freeflight/>Link to Itch page</a>
+								</p>
 								<section>
 									<header>
 										<h3>Example Systems + Scripts</h3>
@@ -156,9 +159,10 @@
 											these points to draw a bezier curve. having two points be the points in which the curve go through, and another two being the weight points that help the user to change
 											the curve.
 											<br />
-											Although most of this tool was made using a tutorial (which can be found <a target="_blank" href=https://www.youtube.com/watch?v=RF04Fi9OCPc&list=PLFt_AvWsXl0d8aDaovNztYf6iTChHzrHP> here </a>),
+											Although most of this tool was made using a tutorial (which can be found <a target="_blank" href=https://www.youtube.com/watch?v =RF04Fi9OCPc&list =PLFt_AvWsXl0d8aDaovNztYf6iTChHzrHP> here </a>),
 											I adapted it into a 3D space and implemented my own system so an agent could follow the created path.
 										</p>
+										<h5>Main Controller:</h5>
 										<p>
 											Below is the base script for this system. It controls adding, removing and editing of the different segments of the created curve.
 											<br />
@@ -172,14 +176,42 @@
 											This script also had a function for moving the different points so that the resultant bezier curve could then be updated.
 											<br />
 											<br />
-											This function would take a given point and change it's stored position value to be the new value given from the editor script.
+											This function would take a given point and change it's stored position value to be the new value given from the editor script. The LoopIndex function called
+											throughout is to ensure we stay within the array, in which if we are above the array count, it will loop back to the first point in the list.
 										</p>
+
 										<img src="images/FreeflightScripts/PathingToolMovePoint.PNG" alt="" />
+
+										<h5>Editor script:</h5>
+										<p>
+											Below is the input handler of the PathEditor script. This is an editor script that draws the path into the scene view to allow the user to move around the points
+											and better customise their path.
+											<br />
+											Depending on the user input, the editor will do different things, for example, if the user was pressing m1 and LShift, a new segment would be automatically added
+											to the path either onto the end or between two segments, depending on whether the user has a segment selected or not.
+											<br />
+											The second if statement controls repainting the path so that it can stay updated in the editor view.
+										</p>
+										<img src="images/FreeflightScripts/PathingToolGetInput.PNG" alt="" />
+										<p>
+											Below is the function that handles drawing the editor into the scene view. It lops through all segments within the path and gets all the points in the path, storing
+											these in an array. IT then draws lines between anchor points and their control point. These points are these passed through the DrawBezier function so it can be 
+											displayed to the user.
+										</p>
+										<p>
+											After This, the script loops through all points in the path and draws these points into the editor, ensuring that the different types of handles are displayed as intended
+											so that they can be differentiated between.
+
+											It then draws these points into the editor, ensuring that the different types of handles are displayed in the intended way so they can be
+											differentiated between.
+										</p>
+										<img src="images/FreeflightScripts/PathingToolDrawCurve.PNG" alt="" />
 									</div>
 									<br />
 									<br />
+
 									<p>
-										Throughout development I prototyped, developed and maintained many different scripts and systems, for example other glider abilities, AI behaviours, and more.
+										Throughout development I prototyped, developed and maintained many other scripts and systems, for example other glider abilities, AI behaviours, and more.
 										<br />
 										<br />
 
@@ -190,11 +222,7 @@
 										<h3>What I learnt from this project</h3>
 									</header>
 									<p>
-										Nunc diam iaculis massa, et aliquet nibh leo non nisl vitae porta lobortis, enim neque fringilla nunc,
-										eget faucibus lacus sem quis nunc suspendisse nec lectus sit amet augue rutrum vulputate ut ut mi. Aenean
-										elementum, mi sit amet porttitor lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor
-										sit amet nullam consequat feugiat dolore tempus. Elementum odio duis semper risus et lectus commodo fringilla.
-										Maecenas sagittis convallis justo vel mattis.
+										
 									</p>
 								</section>
 							</article>
