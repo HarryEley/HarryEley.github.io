@@ -82,13 +82,25 @@
 									<br />
 									<br />
 
-									<button type="button" class="collapsible">Main Behaviour Handler</button>
+									<button type="button" class="collapsible">Main Flock Handler</button>
 									<div class="content">
 										<p>
-											aaaaaaa
+											The main script, Flock.cs, handled spawning in new flock agents and triggering the move in all boids in the flock.											
 										</p>
+										<p>
+											SpawnNewAgent is a method in which instantiates a new boid agent, ensuring its attributes and behaviours and set correctly.
+											It begins by instantiating a new agent using the agent prefab randomly within a sphere, making sure the agent knows which flock it belongs to.
+											The agent's attributes are then set using mother and father attribute sets. This is followed by adding this agent to the agents list so we can
+											continue to monitor and update it. 
+										</p>
+										<img src="images/BoidSimulationScripts/SpawnBoid.PNG" alt="" />
 
-										<img src="images/FreeflightScripts/PathingToolGetInput.PNG" alt="" />
+										<p>
+											The UpdateFlock method is responsible for updating the move of every agent in the agents list, ensuring this move is kept within the max speed 
+											constraints. To calulate this move, the boid agents get all objects within a given radius and react to them in different ways depending on
+											their different behaviours and their weights.
+										</p>
+										<img src="images/BoidSimulationScripts/UpdateFlock.PNG" alt="" />
 
 									</div>
 									<br />
@@ -97,11 +109,40 @@
 									<button type="button" class="collapsible">Original Boid Behaviours</button>
 									<div class="content">
 										<p>
-											aaaaaaa
+											Here are the original behaviours that typical boid agents possess. This includes: allignment, cohesion, avoidance, and a composite behaviour 
+											to combine these different behaviours into one.
+										</p>
+										<p>
+											Below is the composite behaviour. This takes a boid agent and loops through each behaviour in a given behaviour list and calculates a move 
+											direction based on these and their weights, ensuring to return the move direction to where it was called. 
+										</p>
+										<img src="images/BoidSimulationScripts/CompositeBehaviour.PNG" alt="" />
+
+										<p>
+											Below is the allignment behaviour. This behaviour makes a given agent allign towards the average direction of all nearby agents, ignoring 
+											all other objects that aren't boid agents. This alignment move is then returned to where it was called.
 										</p>
 
-										<img src="images/FreeflightScripts/PathingToolGetInput.PNG" alt="" />
+										<img src="images/BoidSimulationScripts/AllignmentBehaviour.PNG" alt="" />
 
+										<p>
+											Below is the cohesion behaviour. This behaviour is responsible for making the boids steer towards all nearby boids, ignoring objects that
+											aren't boid agents. The behaviour calculates the average move position of all nearby agents, returning this cohesion move value.
+										</p>
+
+										<img src="images/BoidSimulationScripts/CohesionBehaviour.PNG" alt="" />
+
+										<p>
+											Below is the avoidance behaviour. This behaviour makes it so the agent moves away from all nearby objects when getting too close. It gets 
+											the nearby object context list and gets the average direction away from all of these objects to avoid them, returning this avoidance 
+											movement to where it was called.
+										</p>
+
+										<img src="images/BoidSimulationScripts/AvoidanceBehaviour.PNG" alt="" />
+
+										<p>
+											This concludes the original boid behaviours and how I have implemented them into my own agents.
+										</p>
 									</div>
 									<br />
 									<br />
@@ -109,10 +150,33 @@
 									<button type="button" class="collapsible">New Boid Behaviours</button>
 									<div class="content">
 										<p>
-											aaaaaaa
+											To create a environmental simulation for the boids, I had to ensure I was simulating the need for a food source, the need to mate, and other
+											natural needs and requirements.
 										</p>
+										<h5>Find Food Behaviour</h5>
+										<p>
+											Below is the behaviour responsible for finding food and returning the direction towards it. Firstly, it gets the nearest food source through
+											calling the method GetNearestFoodSource, which is a simple method which calculates which food source within view distance is closest to this 
+											agent, following this by returning the direction towards this food source or returning no direction due to no nearby food sources. This behaviour
+											was vital in this system since without food the agents would just die out due to hunger. 
+										</p>
+										<img src="images/BoidSimulationScripts/FindFoodBehaviour.PNG" alt="" />
 
-										<img src="images/FreeflightScripts/PathingToolGetInput.PNG" alt="" />
+										<h5>Find Mate Behaviour</h5>
+										<p>
+											Below is the first half of the find mate behaviour. This behaviour is responsible for finding the nearest best mate and attempting to mate with
+											them, returning the direction towards them if too far. Firstly, the agent gets the context list and searches for the mate with the highest
+											attractiveness attribute. This was a vital part in the system, since they should prefer mates with better attributes and higher chances to live
+											than those that are more likely to die quickly. In this first half, we get this best mate and keep them as context. 
+										</p>
+										<img src="images/BoidSimulationScripts/FindMateBehaviour.PNG" alt="" />
+										<p>
+											In the second half, the script first checks whether the agent is close enough to attempt to mate with the other agent. Then it runs through a random
+											number generator to see if the mating was successful or not, in which if it was, a new agent will be spawned with these two agents as the parents and 
+											their need to mate weight is reset, otherwise their need to mate would be lowered by a multiplier. And finally, the direction towards this best mate 
+											would be returned the where this was called.
+										</p>
+										<img src="images/BoidSimulationScripts/GoToMateBehaviour.PNG" alt="" />
 
 									</div>
 
