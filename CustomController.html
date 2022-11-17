@@ -81,13 +81,30 @@
 									<br />
 									<br />
 
-									<button type="button" class="collapsible">Main Player Controller</button>
+									<button type="button" class="collapsible">Main Rod Controller</button>
 									<div class="content">
 										<p>
-											aaaaaaa
+											Below are the main functions of the rod controller, handling moving the hook and resetting it to catch the fish.
+											<br />
+											The ResetHook method simply checks if the hook is high enough to be uncast, in which if it is, the hook will be reset to it's initial
+											position. However, if not above the threshold, the hook wil simply be moved upwards until it reaches the height to be uncast.
+											Whereas the MoveHook method takes a given direction and moves the hook into this direction, ensuring to keep the hook object within bounds.
 										</p>
 
-										<img src="images/FreeflightScripts/PathingToolGetInput.PNG" alt="" />
+										<img src="images/CustomFishingScripts/MainRodController.PNG" alt="" />
+
+										<h5>Controller Value Reciever:</h5>
+										<p>
+											Below is the script which read values recieved from the Arduino, and called different parts of the script depending on what data has been recieved.
+											For example, if the input was from the rotary encoder, it would take this given value and pass it through the CheckRotationData method so it can be 
+											processed into moving the hook.
+										</p>
+										<img src="images/CustomFishingScripts/MainRodControllerReciever.PNG" alt="" />
+										<p>
+											Below is the CheckRotationData method mentioned before. It takes the data recieved as an integer, checks whether it has changed, and applies a movement
+											to the hook in the appropriate direction. Making sure to set the lastRotationValue value to this new value once.
+										</p>
+										<img src="images/CustomFishingScripts/MainRodControllerCheckRotationData.PNG" alt="" />
 
 									</div>
 									<br />
@@ -96,10 +113,16 @@
 									<button type="button" class="collapsible">Fish Spawner</button>
 									<div class="content">
 										<p>
-											aaaaaaa
+											This is the script responsible for spawning in new fish each game day. It functions through having the SpawnNewFishSet method called, which then spawns
+											in a given amount of fish, ensuring to only spawn in fish that the player can actually catch.
+										</p>
+										<p>
+											The main method of this script is the GetRandomFishType, which gets a random fish type from the list of different fish, looping until an appropriate
+											fish has been selected. Once this fish is spawned in, it is passed through to the SpawnNewFish method, which takes the fishtype and instantiates a
+											new gameobject of this fish type in a random location based on the fish being spawned.
 										</p>
 
-										<img src="images/FreeflightScripts/PathingToolGetInput.PNG" alt="" />
+										<img src="images/CustomFishingScripts/FishSpawner.PNG" alt="" />
 
 									</div>
 									<br />
@@ -108,10 +131,18 @@
 									<button type="button" class="collapsible">Fish Type Scripts</button>
 									<div class="content">
 										<p>
-											aaaaaaa
+											Below is the scriptable object for a fish type, having all the information it needs for the game to function as intended. Having these kept as 
+											scriptable objects meant I could easily implement and add new fish to the game without much effort. The different types of fish were then kept in 
+											a list of FishTypeSOs so they could be loaded and refereced in the game's other systems.
 										</p>
 
-										<img src="images/FreeflightScripts/PathingToolGetInput.PNG" alt="" />
+										<img src="images/CustomFishingScripts/FishTypeSO.PNG" alt="" />
+
+										<p>
+											The fish also needed to move across the screen, since idle fish wouldn't make for much interaction, so I simply made them move left to right, ensuring 
+											to flip the sprite once they reached the edge of the screen.
+										</p>
+										<img src="images/CustomFishingScripts/FishMove.PNG" alt="" />
 
 									</div>
 
