@@ -195,7 +195,7 @@
 										<img src="images/FreeflightScripts/PathingToolGetInput.PNG" alt="" />
 										<p>
 											Below is the function that handles drawing the editor into the scene view. It lops through all segments within the path and gets all the points in the path, storing
-											these in an array. IT then draws lines between anchor points and their control point. These points are these passed through the DrawBezier function so it can be 
+											these in an array. IT then draws lines between anchor points and their control point. These points are these passed through the DrawBezier function so it can be
 											displayed to the user.
 										</p>
 										<p>
@@ -206,6 +206,14 @@
 											differentiated between.
 										</p>
 										<img src="images/FreeflightScripts/PathingToolDrawCurve.PNG" alt="" />
+										<h5>Follow Curve:</h5>
+										<p>
+											The following script is what controlled an object to follow a given path. This script gets where the object is along the current curve being followed in the path
+											and calculates the next location to go to along this curve, making use of a bezier equation, and then rotates around this curve so it's always facing forward.
+											<br />
+											Once this object reaches the end of the current curve it will progress onto the next segment, looping back to the initial segment once it has reached the end.
+										</p>
+										<img src="images/FreeflightScripts/PathingFollowCurve.PNG" alt="" />
 									</div>
 									<br />
 									<br />
