@@ -281,10 +281,18 @@
 											<section>
 												<br />
 												<p>
-													Insert Description of Crypt Raider here
+													Crypt Raider is a first-person puzzle game where the player can run around and interact with different objects throughout the environment to
+													help them progress through the level and get to the end. I created this game with a focus on obtaining a greater understanding of C++ and 
+													how I can use this language to create some more advanced behaviours for my game. I also took my time whislt working on this project to look 
+													into Unreal Engine's lighting system, including UE5's new Lumen lighting system.
 												</p>
 												<h4>What I focused on whilst making this:</h4>
-												<p>Write about what I learnt/focused on during this project</p>
+												<p>
+													During this project, I focused on better understanding C++. This included things such as pointers and references, actor and scene components,
+													header files, and more. In this project I make a few different C++ scripts, including a script to allow the player to pick up objects in the 
+													environment, a script that allowed an object to move a given distance in a given direction when set to move, and a custom trigger component 
+													that worked with the mover script to allow for me to implement puzzles into the map.
+												</p>
 												<!--
 														-> Pointers and references
 														-> Actor Components and Scene Components
@@ -314,17 +322,48 @@
 												<br />
 												<button type="button" class="collapsible">C++ and Blueprints</button>
 												<div class="content">
+													<br />
 													<h4>Grabber.cpp</h4>
-													<img src="images/CryptRaider/grabberCPP1.PNG" alt="" />
-													<img src="images/CryptRaider/grabberCPP2.PNG" alt="" />
 													<p>
+														The two images below make up the Grabber component. This script is responsible for enabling the player to pickup and drop objects around
+														the map.
+													</p>
+													<img src="images/CryptRaider/grabberCPP1.PNG" alt="" />
+													<p>
+														As seen above, every tick we check if we have an object held within the physics handle and ensure we hold the object infront of the player.
+														<br />
+														<br />
+														Above is also the Release Function. This function is responsible for releasing any held object so that the player can drop a held object 
+														in a place they want. Firstly, I get a reference to the physics handle to get the grabbed component so I can reset it and remove the "Grabbed"
+														tag. I then call the ReleaseComponent() function within the physics handle. After this, the object will be in world space, letting the player 
+														leave it where they choose.
+													</p>
+													<img src="images/CryptRaider/grabberCPP2.PNG" alt="" />
 
+													<p>
+														Above is the Grab, PickupItemInReach, and GetPhysicsHandle functions. The Grab function is responsible for picking up an object and setting it
+														up for being carried. Firstly, I get a reference to the physics handle so I can reference this later, and create a FHitResult variable to hold
+														objects the player is looking at within the scene. I then check if there is an item within reach through calling the PickupItemInReach function.
+														If an item is found, I get this hit object's primitive component and set it up for being carried by the player, ensuring to give it the "Grabbed"
+														tag and detatching it from it's parent object if it has one. I then call the GrabComponentAtLocationWithRotation from the physics handle, passing
+														this hitComponent.
+														<br />
+														<br />
+														The PickupItemInReach is a function that sends out a sweep and returns a boolean value depending on whether an object that can be picked up has
+														been found, using a sphere as it's collision shape. Finally, the GetPhysicsHandle function simply returns the object's physics handle component.
 													</p>
 
 													<h4>Mover.cpp</h4>
 													<img src="images/CryptRaider/moverCPP.PNG" alt="" />
 													<p>
-
+														The script above is the script responsible for moving an object in a given direction and speed, provided it has been set to be able to move. The 
+														script functions through the main TickComponent function. It works through assigning a target location and then applying a move to this location
+														if the component is set to move. After this, I then get the movement through using VInterConstantTo from FMath, passing in a calculated speed,
+														the object's current location, and the target location. Finally, I pass this calculated movement into the SetActorLocation function of the owner
+														object.
+													</p>
+													<p>
+														I also make use of a public SetShouldMove function, so that other components can set this value easily.
 													</p>
 
 													<h4>TriggerComponent.cpp</h4>
