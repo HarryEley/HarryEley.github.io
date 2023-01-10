@@ -369,7 +369,20 @@
 													<h4>TriggerComponent.cpp</h4>
 													<img src="images/CryptRaider/TriggerComponentCPP.PNG" alt="" />
 													<p>
-
+														The script above is the TriggerComponent script. This is a custom trigger object that activates a mover, provided a given key is present within
+														the trigger area.
+														<br />
+														<br />
+														This script functions through calling the FindAcceptableKey each tick. This function is responsible for setting the canMove value in a preset 
+														Mover to either true or false, depending on whether the correct key is present. Firstly, the GetAcceptableActor function is called to obtain
+														an actor with the correct tag, in which if one isn't found, the mover is set to not move. Alternatively, if an actor is found with the correct
+														key as it's tag, the object is set up to remain in the location it was dropped and is parented to this object. Then, finally, the Mover object's
+														canMove bool is set to true, since the correct key has been placed into the trigger area.
+														<br />
+														<br />
+														The GetAcceptableActor function returns an actor within the trigger area, provided it has the correct tag. Firstly, I create a TArray of actors
+														and pass this into the GetOverlappingActors function, then I filter through each actor found and check whether it has the correct key tag, in 
+														which if it does I return this actor to where it was called. If no actor is found with the given key, a nullptr is returned.
 													</p>
 
 												</div>
