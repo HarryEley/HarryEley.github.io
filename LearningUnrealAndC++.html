@@ -61,17 +61,17 @@
 							<article class="box post">
 								<a target="_blank" href="" class="image featured"><img src="" alt="" /></a>
 								<header>
-									<h2>THIS PAGE IS UNDER DEVELOPMENT</h2>
+									<h2>Overview - IN DEVELOPMENT</h2>
 								</header>
 								<p>
 									I have been developing my skills in using Unreal Engine and C++. To accomplish this, I have been following a Udemy course to aid in my learning (This course can be found
-									<a target="_blank" href=https://www.udemy.com/course/unrealcourse/> here</a>).
+									<a target="_blank" href=https://www.udemy.com/course/unrealcourse /> here</a>). For these projects, I used Unreal Engine Version 5.1.
 								</p>
 								<p>
-									Within this course, I have created 3 different game demos. These being Warehouse Wreckage, Obstacle Assult, and Crypt Raider. These games focus on developing
-									my understanding of different aspects of working in Unreal Engine and C++. After developing each of these games, I then proceeded to test my knowledge by adding 
-									my own mechanic to the game, whilst also improving the tutorial code where possible. I did this so that I could develop better knowledge of using C++, resulting
-									in me having a much greater understanding of how to use it.
+									Within this course, I have created 3 different game demos. These being Warehouse Wreckage, Obstacle Assult, and Crypt Raider, with the complexity of these projects
+									increasing after each. These games focus on developing my understanding of different aspects of working in Unreal Engine and C++. After developing each of these games,
+									I then proceeded to test my knowledge by adding my own mechanic to the game, whilst also improving the tutorial code where possible. I did this so that I could develop 
+									better knowledge of using C++, resulting in me having a much greater understanding of how to use it. 
 								</p>
 								<header>
 									<h2>
@@ -84,10 +84,18 @@
 										<div class="content">
 											<section>
 												<p>
-													Insert Description of Warehouse Wreckage here
+													<br />
+													Warehouse Wreckage is a first-person destruction game where the player can run around shooting different environmental items to knock them over.
+													Some examples of these items are cones, barrels, shelves, and more. The player then has access to restart the level as many times as they want.
+													I created this game with a focus on learning Unreal Engine's basic features, including getting a good understanding of how to use blueprints to
+													perform simple tasks.
 												</p>
 												<h4>What I focused on whilst making this:</h4>
-												<p>Write about what I learnt/focused on during this project</p>
+												<p>
+													During this project I focused on improving my basic in-engine skills. This included how to properly make use of the viewport, moving/placing actors,
+													BSP, basic Blueprint usage, and more. Within this game, I used Blueprints to spawn in objects, shoot out projectiles, and manage the scene. This project
+													used the default Unreal Engine player controller.
+												</p>
 												<!--
 													-> Learning basic Unreal usage
 													-> Navigating viewport
@@ -100,43 +108,95 @@
 														-> aiming projectiles
 														-> reload levels
 												-->
-												<header>
-													<h4>Example Systems + Scripts</h4>
-												</header>
+												<h4>Example Systems + Scripts</h4>
 
 												<br />
-												<br />
 
-												<button type="button" class="collapsible">Holder</button>
+												<button type="button" class="collapsible">Level Screenshots</button>
 												<div class="content">
-													<p>
-														Holding.									
-													</p>
-
+													<br />
+													<img src="images/WarehouseWreckage/CornerScreenshot.PNG" alt="" />
+													<img src="images/WarehouseWreckage/Screenshot2.PNG" alt="" />
+													<img src="images/WarehouseWreckage/Screenshot3.PNG" alt="" />
 												</div>
 												<br />
 												<br />
+
+												<button type="button" class="collapsible">Blueprints</button>
+												<div class="content">
+													<br />
+													<p>
+														
+													</p>
+													<h4>Level Blueprint</h4>
+													<img src="images/WarehouseWreckage/LevelBlueprint.PNG" alt="" />
+													<p>
+														Above is the main level Blueprint responsible for spawning in a projectile and firing it in a forward direction.
+														<br />
+														<br />
+														The top section takes any input from the backspace key and calls the ReloadLevel function when this key is pressed. This function gets the
+														current level name and then passes this into an "OpenLevel(by name)" node, resulting in the level reloading.
+														<br />
+														<br />
+														The bottom section is responsible for spawning a projectile when the spacebar key in pressed. This blueprint uses a branch so that when the 
+														space bar key is pressed, it checks if it has ammo and either spawns in a new projectile or reloads the gun, calling the relevant functions 
+														to do so.
+													</p>
+
+													<h4>Spawn Projectile Function</h4>
+													<img src="images/WarehouseWreckage/Level_SpawnProjectile.PNG" alt="" />
+													<p>
+														The Spawn Projectile function is responsible for spawning in a new projectile into the level and ensuring an impulse is applied upon this 
+														creation. When called, this function spawns in a new projectile, ensuring the rotation and position is taken from the player pawn, and then 
+														calls the add impulse function, passing this new projectile as a target reference.
+													</p>
+
+													<h4>Add Impulse Function</h4>
+													<img src="images/WarehouseWreckage/AddImpulse.PNG" alt="" />
+													<p>
+														When called, this function gets an actor and applies an impulse force in the forward direction with a given amount of force.
+													</p>
+
+
+													<h4>Decrease Ammo Function</h4>
+													<img src="images/WarehouseWreckage/Level_DecreaseAmmo.PNG" alt="" />
+													<p>
+														When called, this function lowers the ammo count by one
+													</p>
+
+													
+
+												</div>
 
 											<section>
 												<header>
 													<h4>Overview:</h4>
 												</header>
 												<p>
-										
+													Completing this blueprint system and combining it with Unreal Engine's other built-in features have been able to give me a great understanding of
+													the basic functionaility of this engine and how to make good use of it.
 												</p>
 											</section>
 
 										</div>
 										<br />
 										<br />
-										<button type="button" class="collapsible">Obstacle Assult</button>
+										<button type="button" class="collapsible">Obstacle Assault</button>
 										<div class="content">
 											<section>
+												<br />
 												<p>
-													Insert Description of Obstacle Assult here
+													Obstacle Assault is a third-person parkour game where the player has to use their environment in order to progress on throughout the level.
+													Some different environmental features includes moving platforms, rotating platforms, and jumping puzzles. I created this game with a focus 
+													on learning basic C++ usage for scripts in Unreal Engine, and how I can use these scripts to manipulate the environment during play time.
 												</p>
 												<h4>What I focused on whilst making this:</h4>
-												<p>Write about what I learnt/focused on during this project</p>
+												<p>
+													During this project, I focused on learning basic C++ usage in Unreal. This included learning how to manipulate an actor's movement and rotation
+													during run time. The script I made was a configurable C++ script that allowed the user to make an actor move to and from a given distance and
+													direction, whilst also allowing them to configure it to have a rotation. I also looked into creating C++ actors, Unreal Engine's live coding 
+													feature, and linking blueprint to C++.
+												</p>
 												<!--
 													-> Learning basic C++ in Unreal
 														-> Make platforms move
@@ -160,26 +220,58 @@
 													<h4>Example Systems + Scripts</h4>
 												</header>
 
-												<br />
-												<br />
-
-												<button type="button" class="collapsible">Holder</button>
+												<button type="button" class="collapsible">Level Screenshots</button>
 												<div class="content">
-													<p>
-														Holding.
-													</p>
+													<br />
+													<img src="images/ObstacleAssault/spinners.PNG" alt="" />
+													<p>Above is an image of spinner object. I made these yellow discs rotate clockwise to make it more difficult for the player to naviagte the terrain</p>
 
+													<img src="images/ObstacleAssault/Screenshot2.PNG" alt="" />
+													<p>Above is an image containing two types of moving blocks. The stone block on the right moves up and down to allow the player access to higher ground,
+													meanwhile the purple cubes move side to side to provide an obstacle to the player as they move on within the level.</p>
 												</div>
 												<br />
 												<br />
+
+												<button type="button" class="collapsible">C++ Script Screenshots</button>
+												<div class="content">
+													<br />
+													<h4>MovingPlatform.h</h4>
+													<img src="images/ObstacleAssault/MovingPlatformH.PNG" alt="" />
+													<p>
+														Above is the header file for the MovingPlatform script. I ensured to categorize and allow the main variables to be edited within the editor so that
+														the settings can be customized for different objects.
+													</p>
+													<h4>MovingPlatform.cpp</h4>
+													<img src="images/ObstacleAssault/MovingPlatformCPP.PNG" alt="" />
+													<p>
+														Above is the main C++ script that handles moving and rotating an actor. Every tick this script calls 2 functions: MovePlatform() and RotatePlatform(),
+														passing DeltaTime into these so it can be used for calculations.
+														<br />
+														<br />
+														The MovePlatform() function applies a movement to the actor in a preset direction and speed. It functions through checking if the actor has reached
+														it's destination, in which if it has, it will reset it's start location and send the actor back in the direction it came from. However, If the actor 
+														hasn't reached it's destination, the actor will be moved towards it's destination.
+														<br />
+														<br />
+														The RotatePlatform() function applies a local rotation to the actor by a preset rotationSpeed value.
+													</p>
+
+												</div>
 											</section>
 											<section>
 												<header>
 													<h4>Overview:</h4>
 												</header>
-													<p>
-										
-													</p>
+												<p>
+													Completing this C++ system and implementing it into Unreal Engine has helped me develop an understanding of how C++ scripts function, and how I
+													can use them to manipulate actors throughout the scene. From doing this project, I have learnt how to create, add functionality to, and set up 
+													c++ scripts so they can function within an Unreal Engine project. 
+													<br />
+													<br />
+													I plan to come back to this project in the future to add greater functionality and ideas I have to make the gameplay much more enjoyable and to
+													add more depth to the gameplay loop.
+												</p>
 											</section>
 										</div>
 										<br />
@@ -209,7 +301,16 @@
 												<br />
 												<br />
 
-												<button type="button" class="collapsible">Holder</button>
+												<button type="button" class="collapsible">Level Screenshots</button>
+												<div class="content">
+													<p>
+														Holding.
+													</p>
+
+												</div>
+												<br />
+												<br />
+												<button type="button" class="collapsible">C++ and Blueprints</button>
 												<div class="content">
 													<p>
 														Holding.
